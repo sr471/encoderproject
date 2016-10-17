@@ -1,13 +1,14 @@
 
 var textArea = document.getElementById('textArea');
 var inputText = document.getElementById('inputText');
+var translationArea = document.getElementById('translationArea');
+var translationInputText = document.getElementById('translationInputText');
 
 $("input[type='radio']").click(function(){
   $("input:checked").prop('checked', false);
   $(this).prop('checked', true);
   textArea.textContent = "";
 //  inputText.textContent = " ";
-
 })
 
 var letters =  {
@@ -48,24 +49,33 @@ if (userKey == 8){
    textArea.textContent = textArea.textContent.substr(0, textArea.textContent.length - 1);
 }
 
+
 else if($("input:checked").val() == "caesarCipher"){
 
-  console.log("heloo");
-// if caesar
-  if(userKey + 1 == 91){
-    textArea.textContent +="a";
-  }
+  // if caesar
+    if(userKey + 1 == 91){
+        textArea.textContent +="a";
+      }
 
-  else if(userKey == 32){
-  textArea.textContent += letters[32];
-  }
-else {
-      textArea.textContent += letters[userKey + 1];
-  }
-}
+      else if(userKey == 32){
+      textArea.textContent += letters[32];
+      }
+    else {
+          textArea.textContent += letters[userKey + 1];
+      }
+    }
 
 
-// if heiroglyphics
+else if($("input:checked").val() == "heiroglyphics"){
+    // if heiroglyphics
+    if(userKey == 32){
+      textArea.textContent += letters[32];
+    }
+      else{
+        $("#textArea").append("<img src='images/heiroglyphics/" + letters[userKey] + ".gif'>");
+      }
+    }
+
 
 else{
   // if echo
@@ -75,4 +85,38 @@ else{
 
 });
 
-//event handler
+
+
+
+
+$("#translationInputText").keydown(function(e){
+var userKey = e.keyCode;
+
+if (userKey == 8){
+   translationArea.textContent = translationArea.textContent.substr(0, translationArea.textContent.length - 1);
+}
+
+
+else if($("input:checked").val() == "caesarCipher"){
+
+  // if caesar
+    if(userKey == 65){
+        translationArea.textContent += "z";
+      }
+
+      else if(userKey == 32){
+      translationArea.textContent += letters[32];
+      }
+    else {
+          translationArea.textContent += letters[userKey - 1];
+      }
+    }
+
+
+else{
+  // if echo
+  $("#translationArea").append(letters[userKey]);
+}
+
+
+});
