@@ -80,7 +80,7 @@ else if($("input:checked").val() == "heiroglyphics"){
     }
       else{
         $("#textArea").append("<img src='images/heiroglyphics/" + letters[userKey] + ".gif'>");
-      }//
+      }//gets the image for the letter by using the image tag
     }
 
 
@@ -101,26 +101,25 @@ var userKey = e.keyCode;
 
 if (userKey == 8){
    translationArea.textContent = translationArea.textContent.substr(0, translationArea.textContent.length - 1);
-}
+}//if backspace, delete the last letter
+
 else if(userKey == 13 && $("input:checked").val() == "caesarCipher")
-{
-  var currentArray;
-  currentArray = translationInputText.value.split("");
-translationArea.textContent = "";
-  for(var i = 0; i < currentArray.length; i++)
-  {
-    if(currentArray[i] == " ")
+{// if enter key is pressed
+    var currentArray = translationInputText.value.split("");
+    translationArea.textContent = "";
+    for(var i = 0; i < currentArray.length; i++)
     {
-      translationArea.textContent += " ";
-    }
-    else
-    {
-      var currentLetter = currentArray[i].toUpperCase();
-      currentLetter = currentLetter.charCodeAt();
-      translationArea.textContent += letters[currentLetter - 1];
-    }
-    }
-  //translationArea.textContent = translationInputText
+      if(currentArray[i] == " ")
+      {
+        translationArea.textContent += " ";
+      }
+      else
+      {
+        var currentLetter = currentArray[i].toUpperCase();
+        currentLetter = currentLetter.charCodeAt();
+        translationArea.textContent += letters[currentLetter - 1];
+      }
+      }
 }
 
 
@@ -136,7 +135,7 @@ else if($("input:checked").val() == "caesarCipher"){
       }
     else {
           translationArea.textContent += letters[userKey - 1];
-      }
+      }//decodes the caesar cipher so -1
     }
 
 
