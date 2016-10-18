@@ -1,14 +1,18 @@
 
+//Variables
 var textArea = document.getElementById('textArea');
 var inputText = document.getElementById('inputText');
 var translationArea = document.getElementById('translationArea');
 var translationInputText = document.getElementById('translationInputText');
 
+//Checks if a radio button is clicked and clears all text content
 $("input[type='radio']").click(function(){
   $("input:checked").prop('checked', false);
   $(this).prop('checked', true);
   textArea.textContent = "";
-//  inputText.textContent = " ";
+  inputText.value = "";
+  translationArea.textContent = "";
+  translationInputText.value = "";
 })
 
 var letters =  {
@@ -94,6 +98,26 @@ var userKey = e.keyCode;
 
 if (userKey == 8){
    translationArea.textContent = translationArea.textContent.substr(0, translationArea.textContent.length - 1);
+}
+else if(userKey == 13 && $("input:checked").val() == "caesarCipher")
+{
+  var currentArray;
+  currentArray = translationInputText.value.split("");
+translationArea.textContent = "";
+  for(var i = 0; i < currentArray.length; i++)
+  {
+    if(currentArray[i] == " ")
+    {
+      translationArea.textContent += " ";
+    }
+    else
+    {
+      var currentLetter = currentArray[i].toUpperCase();
+      currentLetter = currentLetter.charCodeAt();
+      translationArea.textContent += letters[currentLetter - 1];
+    }
+    }
+  //translationArea.textContent = translationInputText
 }
 
 
