@@ -15,6 +15,7 @@ $("input[type='radio']").click(function(){
   translationInputText.value = "";
 })
 
+//Conversion table
 var letters =  {
 65: "a",
 66: "b",
@@ -45,13 +46,13 @@ var letters =  {
 32: " "
 }
 
-
+//this function is run if a key is pressed in the input text Area
 $("#inputText").keydown(function(e){
-var userKey = e.keyCode;
+var userKey = e.keyCode;// the keyCode is put into the variable userKey
 
 if (userKey == 8){
    textArea.textContent = textArea.textContent.substr(0, textArea.textContent.length - 1);
-}
+}// if the userkey is backspace use a substring to delete the last letter in the text area
 
 
 else if($("input:checked").val() == "caesarCipher"){
@@ -59,14 +60,16 @@ else if($("input:checked").val() == "caesarCipher"){
   // if caesar
     if(userKey + 1 == 91){
         textArea.textContent +="a";
-      }
+      }//if the letter is z coverrt to a
 
       else if(userKey == 32){
       textArea.textContent += letters[32];
-      }
+    }//if space button dont add anything to it
+
     else {
           textArea.textContent += letters[userKey + 1];
-      }
+      }//letters are converted to the next letter
+
     }
 
 
@@ -77,7 +80,7 @@ else if($("input:checked").val() == "heiroglyphics"){
     }
       else{
         $("#textArea").append("<img src='images/heiroglyphics/" + letters[userKey] + ".gif'>");
-      }
+      }//
     }
 
 
