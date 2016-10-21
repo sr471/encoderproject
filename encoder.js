@@ -55,6 +55,15 @@ if (userKey == 8){
    textArea.textContent = textArea.textContent.substr(0, textArea.textContent.length - 1);
 }// if the userkey is backspace use a substring to delete the last letter in the text area
 
+else if(userKey < 65 || userKey > 90){
+
+      if(userKey == 32){
+      textArea.textContent += letters[32];
+    }
+  console.log("nothing");
+  textArea.textContent +="";
+}
+
 
 else if($("input:checked").val() == "caesarCipher"){
 
@@ -103,6 +112,15 @@ var userKey = e.keyCode;
 if (userKey == 8){
    translationArea.textContent = translationArea.textContent.substr(0, translationArea.textContent.length - 1);
 }//if backspace, delete the last letter
+
+else if(userKey < 65 || userKey > 90){
+
+      if(userKey == 32){
+      textArea.textContent += letters[32];
+    }
+  console.log("nothing");
+  textArea.textContent +="";
+}
 
 else if(userKey == 13 && $("input:checked").val() == "caesarCipher")
 {// if enter key is pressed
