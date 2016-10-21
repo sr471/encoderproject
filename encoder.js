@@ -16,6 +16,7 @@ $("input[type='radio']").click(function(){
 })
 
 //Conversion table
+    // convrts the key numbers to the letters they reresent
 var letters =  {
 65: "a",
 66: "b",
